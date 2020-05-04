@@ -10,22 +10,15 @@
 <body>
 
     <header>
-        <h1>Tartuntatiedot</h1>
+        <h1><a href="">Tartuntatiedot.fi</a></h1>
         <ul id="nav">
-            <li>Dashboard</li>
-            <li>About</li>
-            <li>Contact</li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#statistics">Statistics</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </header>
     <main>
-
-        <section id="videoSection">
-            <h2>Mainosvideo</h2>
-            <iframe width="320" height="240" src="https://www.youtube.com/embed/Q7dbLfSMe50" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-            </iframe>
-        </section>
 
         <section id="dashboard">
             <h2>Dashboard</h2>
@@ -59,11 +52,12 @@
         </section>
 
         <section id="statistics">
-            <h2>Tilastoja</h2>
-            <p>tähän tulee kaavio</p>
-            <div class="chart-wrapper">
-                <canvas id="chart" width="350" height="250"></canvas>
-            </div>
+            <figure class="chart-wrapper">
+                <canvas id="lineChart"></canvas>
+            </figure>
+            <figure class="chart-wrapper">
+                <canvas id="barChart" ></canvas>
+            </figure>
         </section>
 
         <section id="map">
@@ -73,6 +67,10 @@
         <section id="about">
             <h2>About</h2>
             <p>Lorem Ipsum</p>
+            <iframe id="tartuntaVideo" src="https://www.youtube.com/embed/Q7dbLfSMe50?&autoplay=1&mute=1" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
             <ul>
                 <li><figure width="150" height="200">
                     <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
