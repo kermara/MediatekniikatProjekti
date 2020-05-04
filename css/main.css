@@ -1,18 +1,57 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 body {
+    margin: 0;
+    height: 0;
     font-family: "Roboto", "sans-serif";
 }
 
-body > .contact{
-    list-style-type: none;
+header {
+    display: flex;
+    height: 75px;
+    width: 100%;
+    justify-content: space-around;
+    background-color: #10316b;
 }
 
-.about{
-    list-style-type: none;
+header > h1 {
+    margin: auto 0;
+    font-family: 'Righteous', cursive;
+}
+
+header > h1 > a {
+    text-decoration: none;
+    color: #e25822;
+}
+
+#nav {
+    display: flex;
+    flex-direction: row;
+}
+
+#nav > li {
+    list-style: none;
+    margin: auto 2em;
+}
+
+#nav > li > a {
+    text-decoration: none;
+    color: #ececeb;
+}
+
+.statistics {
+    display: flex;
+    flex-direction: column;
+    margin: 1em auto;
 }
 
 .chart-wrapper {
-    max-width: 350px;
-    max-height: 250px;
+    max-width: 1000px;
+    max-height: 500px;
+    margin: 2em auto;
+}
+
+.contact, .about{
+    list-style-type: none;
 }
