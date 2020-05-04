@@ -4,10 +4,15 @@ body {
     font-family: "Roboto", "sans-serif";
 }
 
+body > .contact{
+    list-style-type: none;
+}
+
 .about{
     list-style-type: none;
 }
 
-body > .contact{
-    list-style-type: none;
+.chart-wrapper {
+    max-width: 350px;
+    max-height: 250px;
 }

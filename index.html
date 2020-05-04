@@ -3,137 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <title>Webtekniikat ja digitaalinen media -projekti</title>
-    <link href="css/main.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/main.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
 <body>
-<header>
-    <h1>Tartuntatiedot</h1>
-    <ul id="nav">
-        <li>Dashboard</li>
-        <li>About</li>
-        <li>Contact</li>
-    </ul>
-</header>
-<main>
-    <section id="videoSection">
-        <h2>Mainosvideo</h2>
-        <iframe width="320" height="240" src="https://www.youtube.com/embed/Q7dbLfSMe50" frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-        </iframe>
-    </section>
-    <section id="dashboard">
-        <h2>Dashboard</h2>
-        <p>Valitse sairaanhoitopiiri: </p>
-        <form>
-            <select id="healthCareDistricts">
-                <option value="Etela-Karjala">Etelä-Karjala</option>
-                <option value="Etela-Pohjanmaa">Etelä-Pohjanmaa</option>
-                <option value="Etela-Savo">Etelä-Savo</option>
-                <option value="HUS">HUS</option>
-                <option value="Ita_Savo">Itä-Savo</option>
-                <option value="Kainuu">Kainuu</option>
-                <option value="Kanta-Hame">Kanta-Häme</option>
-                <option value="Keski-Pohjanmaa">Keski-Pohjanmaa</option>
-                <option value="Keski-Suomi">Keski-Suomi</option>
-                <option value="Kymenlaakso">Kymenlaakso</option>
-                <option value="Lappi">Lappi</option>
-                <option value="Lansi-Pohja">Länsi-Pohja</option>
-                <option value="Pirkanmaa">Pirkanmaa</option>
-                <option value="Pohjois-Karjala">Pohjois-Karjala</option>
-                <option value="Pohjois-Pohjanmaa">Pohjois-Pohjanmaa</option>
-                <option value="Pohjois-Savo">Pohjois-Savo</option>
-                <option value="Paijat-Hame">Päijät-Häme</option>
-                <option value="Satakunta">Satakunta</option>
-                <option value="Vaasa">Vaasa</option>
-                <option value="Varsinais-Suomi">Varsinais-Suomi</option>
-                <option value="Åland">Ahvenanmaa</option>
-            </select>
-            <button type="submit" id="hakunappi">Hae</button>
-        </form>
-    </section>
-    <section id="statistics">
-        <h2>Tilastoja</h2>
-        <p>tähän tulee kaavio</p>
 
-    </section>
-
-    <section id="map">
-        <div class="tartunta-map"></div>
-    </section>
-
-    <section id="about">
-        <h2>About</h2>
-        <p>Lorem Ipsum</p>
-        <ul>
-            <li><figure width="150" height="200">
-                <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
-                <figcaption>
-                    nimi
-                </figcaption>
-            </figure>
-            </li>
-            <li>
-                <figure width="150" height="200">
-                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
-                    <figcaption>
-                        nimi
-                    </figcaption>
-                </figure>
-            </li>
-            <li>
-                <figure width="150" height="200">
-                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
-                    <figcaption>
-                        nimi
-                    </figcaption>
-                </figure>
-            </li>
+    <header>
+        <h1>Tartuntatiedot</h1>
+        <ul id="nav">
+            <li>Dashboard</li>
+            <li>About</li>
+            <li>Contact</li>
         </ul>
-    </section>
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Lorem Ipsum</p>
-        <ul>
-            <li><figure width="150" height="200">
-                <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
-                <figcaption>
-                    nimi
-                </figcaption>
-            </figure>
-            </li>
-            <li>
-                <figure width="150" height="200">
-                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
-                    <figcaption>
-                        nimi
-                    </figcaption>
-                </figure>
-            </li>
-            <li>
-                <figure width="150" height="200">
-                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
-                    <figcaption>
-                        nimi
-                    </figcaption>
-                </figure>
-            </li>
-        </ul>
-    </section>
-</main>
-<footer>
-    <h4>Social media</h4>
-    <a href="#" class="fa fa-facebook"></a>
-    <a href="#" class="fa fa-twitter"></a>
-    <p>Copyright 2020</p>
-    <ul id="navfooter">
-        <li>Dashboard</li>
-        <li>About</li>
-        <li>Contact</li>
-    </ul>
-</footer>
+    </header>
+    <main>
 
-<script src="js/main.js"></script>
+        <section id="videoSection">
+            <h2>Mainosvideo</h2>
+            <iframe width="320" height="240" src="https://www.youtube.com/embed/Q7dbLfSMe50" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+        </section>
+
+        <section id="dashboard">
+            <h2>Dashboard</h2>
+            <p>Valitse sairaanhoitopiiri: </p>
+            <form>
+                <select id="healthCareDistricts">
+                    <option value="Etela-Karjala">Etelä-Karjala</option>
+                    <option value="Etela-Pohjanmaa">Etelä-Pohjanmaa</option>
+                    <option value="Etela-Savo">Etelä-Savo</option>
+                    <option value="HUS">HUS</option>
+                    <option value="Ita_Savo">Itä-Savo</option>
+                    <option value="Kainuu">Kainuu</option>
+                    <option value="Kanta-Hame">Kanta-Häme</option>
+                    <option value="Keski-Pohjanmaa">Keski-Pohjanmaa</option>
+                    <option value="Keski-Suomi">Keski-Suomi</option>
+                    <option value="Kymenlaakso">Kymenlaakso</option>
+                    <option value="Lappi">Lappi</option>
+                    <option value="Lansi-Pohja">Länsi-Pohja</option>
+                    <option value="Pirkanmaa">Pirkanmaa</option>
+                    <option value="Pohjois-Karjala">Pohjois-Karjala</option>
+                    <option value="Pohjois-Pohjanmaa">Pohjois-Pohjanmaa</option>
+                    <option value="Pohjois-Savo">Pohjois-Savo</option>
+                    <option value="Paijat-Hame">Päijät-Häme</option>
+                    <option value="Satakunta">Satakunta</option>
+                    <option value="Vaasa">Vaasa</option>
+                    <option value="Varsinais-Suomi">Varsinais-Suomi</option>
+                    <option value="Åland">Ahvenanmaa</option>
+                </select>
+                <button type="submit" id="hakunappi">Hae</button>
+            </form>
+        </section>
+
+        <section id="statistics">
+            <h2>Tilastoja</h2>
+            <p>tähän tulee kaavio</p>
+            <div class="chart-wrapper">
+                <canvas id="chart" width="350" height="250"></canvas>
+            </div>
+        </section>
+
+        <section id="map">
+            <div class="tartunta-map"></div>
+        </section>
+        <section id="rss">
+            <h2>News</h2>
+            <script type="text/javascript">
+              rssfeed_url = new Array();
+              rssfeed_url[0]="https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/infektio-ja-rokotusuutiset/uutisia-aiheesta-koronavirus-covid-19?p_p_id=newsarchive_WAR_newsarchive&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_cacheability=cacheLevelPage&p_p_resource_id=rss";
+              rssfeed_url[1] = "https://www.fimea.fi/tietoa_fimeasta/ajankohtaista/koronavirus-covid-19-?p_p_id=com_liferay_asset_publisher_web_portlet_AssetPublisherPortlet_INSTANCE_AdddW1SvG2ta&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_resource_id=getRSS&p_p_cacheability=cacheLevelPage";
+              rssfeed_url[2]="";
+              rssfeed_frame_width="350";
+              rssfeed_frame_height="600";
+              rssfeed_scroll="off";
+              rssfeed_scroll_step="6";
+              rssfeed_scroll_bar="on";
+              rssfeed_target="_blank";
+              rssfeed_font_size="12";
+              rssfeed_font_face="";
+              rssfeed_border="on";
+              rssfeed_title="on";
+              rssfeed_title_name="Uutisia aiheesta koronavirus COVID-19";
+              rssfeed_title_bgcolor="#10316b";
+              rssfeed_title_color="#fff";
+              rssfeed_title_bgimage="";
+              rssfeed_footer="off";
+              rssfeed_footer_name='<a href="https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/infektio-ja-rokotusuutiset/uutisia-aiheesta-koronavirus-covid-19">THL</a>' +
+                  '<br><a href="https://www.fimea.fi/tietoa_fimeasta/ajankohtaista/koronavirus-covid-19-">Fimea</a>';
+              rssfeed_footer_bgcolor="#fff";
+              rssfeed_footer_color="#333";
+              rssfeed_footer_bgimage="";
+              rssfeed_item_title_length="50";
+              rssfeed_item_title_color="#666";
+              rssfeed_item_bgcolor="#fff";
+              rssfeed_item_bgimage="";
+              rssfeed_item_border_bottom="on";
+              rssfeed_item_date="on";
+              rssfeed_item_description="on";
+              rssfeed_item_description_length="120";
+              rssfeed_item_description_color="#666";
+              rssfeed_item_description_link_color="#333";
+              rssfeed_item_description_tag="off";
+              rssfeed_no_items="0";
+              rssfeed_cache = "f0ce29efbea594e64c4debd74d97f0cc";
+              //-->
+            </script>
+            <script type="text/javascript" src="js/rss-feed.js"></script>
+        </section>
+
+        <section id="about">
+            <h2>About</h2>
+            <p>Lorem Ipsum</p>
+            <ul>
+                <li><figure width="150" height="200">
+                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
+                    <figcaption>
+                        nimi
+                    </figcaption>
+                </figure>
+                </li>
+                <li>
+                    <figure width="150" height="200">
+                        <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
+                        <figcaption>
+                            nimi
+                        </figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure width="150" height="200">
+                        <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
+                        <figcaption>
+                            nimi
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </section>
+        
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Lorem Ipsum</p>
+            <ul>
+                <li><figure width="150" height="200">
+                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
+                    <figcaption>
+                        nimi
+                    </figcaption>
+                </figure>
+                </li>
+                <li>
+                    <figure width="150" height="200">
+                        <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
+                        <figcaption>
+                            nimi
+                        </figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure width="150" height="200">
+                        <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
+                        <figcaption>
+                            nimi
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <h4>Social media</h4>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <p>Copyright 2020</p>
+        <ul id="navfooter">
+            <li>Dashboard</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+    </footer>
+
+<script src="js/chart.js"></script>
 </body>
 </html>
