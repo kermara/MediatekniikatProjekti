@@ -10,14 +10,20 @@ async function getData() {
     const confirmedCases = getConfirmedCases(formattedResponse);
     const healthCareDistricts = getConfirmedHCDistricts(confirmedCases);
     console.log(healthCareDistricts);
-    const cCases = getConfirmedValuesByDistrict(healthCareDistricts);
+    const cCases = getValuesBy(healthCareDistricts);
     console.log(cCases);
 
     const deathCases = getDeathCases(formattedResponse);
     const area = getDeathsbyArea(deathCases);
     console.log(area);
-    const dCases = getDeathsValuesByArea(area);
+    const dCases = getValuesBy(area);
     console.log(dCases);
+
+    const total = formattedResponse.confirmed.length;
+    console.log(total)
+    const lastUpdate = formattedResponse.confirmed.pop().date;
+    let d = new Date (lastUpdate);
+    console.log(new Intl.DateTimeFormat(['ban', 'id']).format(d));
 
   } catch (error) {
     console.log(error)
@@ -34,20 +40,6 @@ function getConfirmedHCDistricts(data) {
   return healthCareDistricts;
 }
 
-function getConfirmedValuesByDistrict(data) {
-  const map = new Map();
-  data.forEach(function(keyValue) {
-    if (map.has(keyValue)){
-      let count= map.get(keyValue);
-      count++;
-      map.set(keyValue, count);
-    }else {
-      map.set(keyValue, 1);
-    }
-  });
-  return map;
-}
-
 function getDeathCases(data){
   const deathCases = data.deaths;
   return deathCases;
@@ -58,7 +50,7 @@ function getDeathsbyArea(data) {
   return area;
 }
 
-function getDeathsValuesByArea(data) {
+function getValuesBy(data) {
   const map = new Map();
   data.forEach(function(keyValue) {
     if (map.has(keyValue)){
@@ -72,7 +64,6 @@ function getDeathsValuesByArea(data) {
   return map;
 }
 
-let values;
-(async () => {
-  values = await getData();
+(async (x) => {
+  x = await getData();
 })();
