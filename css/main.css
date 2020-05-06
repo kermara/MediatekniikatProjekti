@@ -40,6 +40,32 @@ header > h1 > a {
     color: #ececeb;
 }
 
+article {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.container {
+    width: 50%;
+    padding: 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+#map {
+    width: 100%;
+    height: 50vh;
+}
+
+#info-text{
+    background: #ececeb;
+    color: #e25822;
+    text-align: center;
+}
+
 .statistics {
     display: flex;
     flex-direction: column;
@@ -55,3 +81,9 @@ header > h1 > a {
 .contact, .about{
     list-style-type: none;
 }
+
+
+
+
+
+
