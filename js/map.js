@@ -6,8 +6,8 @@
 
   //search for a Open Street Map
   let map = L.map('map', {
-    minZoom: 4,
-    maxZoom: 5
+    minZoom: 5,
+    maxZoom: 6
   });
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -15,14 +15,14 @@
   }).addTo(map);
 
   //Set mapview in the center of Finland
-  map.setView([65.5538179, 25.7496755], 4);
+  map.setView([65.5538179, 25.7496755], 5);
 
 
   map.createPane('labels');
   map.getPane('labels').style.zIndex = 650;
   map.getPane('labels').style.pointerEvents = 'none';
 
- let positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+  let positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
     attribution: '©OpenStreetMap, ©CartoDB'
   }).addTo(map);
 
@@ -62,9 +62,9 @@
       const area = getDeathsbyArea(deathCases);
       const dCases = getValuesBy(area);
       p.innerHTML += `<p><b>Kuolleet yliopistosairaalan mukaan: </b></p>`;
-        for (let [key, value] of dCases) {
-          p.innerHTML += `<p>${key} ${value}</p>`;
-        }
+      for (let [key, value] of dCases) {
+        p.innerHTML += `<p>${key} ${value}</p>`;
+      }
 
       const lastUpdate = formattedResponse.confirmed.pop().date;
       let d = new Date(lastUpdate);
@@ -127,12 +127,12 @@
           {mode: 'cors'});
       if (!response.ok) throw new Error('jokin meni pieleen');
       const data = await response.json();
-        L.geoJson(data, {
-          style: function(feature) {
+      L.geoJson(data, {
+        style: function(feature) {
           return {color: '#e25822'};
         },
         onEachFeature: function(feature, layer) {
-          let popupContent = '<h3>Tartunnat maakunnassa: </h3> ' +
+          let popupContent = '<h3>Vahvistetut tartunnat: </h3> ' +
               '<h4>' + feature.properties.healthCareDistrict + ' ' +
               myData.get(feature.properties.healthCareDistrict) + '</h4>';
           if (feature.properties && feature.properties.popupContent) {

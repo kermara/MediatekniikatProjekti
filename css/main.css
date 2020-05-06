@@ -56,15 +56,39 @@ article {
 }
 
 #map {
-    width: 100%;
+    max-width: 1000px;
     height: 50vh;
 }
 
 #info-text{
     background: #ececeb;
     color: #e25822;
-    text-align: center;
+    text-align: left;
+    font-size: 24px;
+    margin: 3px;
 }
+.float-container {
+    border: 3px solid #fff;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.float-child-info {
+    width: 40%;
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
+}
+
+.float-child-map {
+    width: 60%;
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
+    margin-right: 20px;
+}
+
+
 
 .statistics {
     display: flex;
