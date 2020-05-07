@@ -54,6 +54,7 @@
       const div = document.querySelector('#info');
 
       let content = `<ul>`;
+
       const totalc = formattedResponse.confirmed.length;
       content += `<li><b>Vahvistetut tartunnat yhteensä: </b> ${totalc}</li>`;
 
@@ -128,7 +129,7 @@
 
   legend.onAdd = function (map) {
 
-    var div = L.DomUtil.create('div', 'info legend'),
+    var div = L.DomUtil.create('div', 'info legend leaflet-control'),
         grades = [ 10, 50, 100, 200, 500, 1000, 3000],
         labels = [];
 

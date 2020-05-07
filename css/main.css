@@ -98,6 +98,23 @@ article {
     list-style-type: none;
     line-height: 200%;
 }
+/* Borders for maps color declaration */
+
+
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
 
 
 
@@ -159,11 +176,13 @@ article {
     color: #10316b;
     font-weight: 700;
     font-size: 1.5em;
+    text-align: center;
 }
 
 .about-figure figcaption p {
     color: #222222;
     line-height: 1.5em;
+    text-align: center;
 }
 
 @media only screen and (min-width: 350px) {
