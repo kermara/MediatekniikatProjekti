@@ -23,6 +23,8 @@ header > h1 {
 header > h1 > a {
     text-decoration: none;
     color: #e25822;
+    POSITION: relative;
+    left: 40px;
 }
 
 #nav {
@@ -114,7 +116,13 @@ article {
 .chart-wrapper {
     max-width: 1000px;
     max-height: 500px;
+    min-width: 700px;
+    min-height: 400px;
     margin: 2em auto;
+}
+#statistics {
+    flex-wrap: wrap;
+    display: flex;
 }
 
 .contact, .about{

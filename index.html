@@ -14,16 +14,16 @@
 <header>
     <h1><a href="">Tartuntatiedot.fi</a></h1>
     <ul id="nav">
-        <li><a href="#dashboard">Map</a></li>
-        <li><a href="#statistics">Statistics</a></li>
-        <li><a href="#rss">News</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#dashboard">Kartta</a></li>
+        <li><a href="#statistics">Tilastot</a></li>
+        <li><a href="#rss">Uutiset</a></li>
+        <li><a href="#about">Sivustosta</a></li>
+        <li><a href="#contact">Yhteystiedot</a></li>
     </ul>
     <ul id="flags">
-        <li><a href="index.html"><img src="img/finicon.png"></a></li></img>
-        <li><a href="eng.html"><img src="img/engicon.png"></a></li></img>
-        <li><a href="index.html"><img src="img/sweicon.png"></a></li></img>
+        <li><a href="index.html"><img src="img/finicon.png" title="Suomi"></a></li></img>
+        <li><a href="eng.html"><img src="img/engicon.png" title="Englanti"></a></li></img>
+        <li><a href="index.html"><img src="img/sweicon.png" title="Tulossa"></a></li></img>
     </ul>
 </header>
 <main>
@@ -77,18 +77,26 @@
     </section>
 
     <section id="statistics">
-        <h2>Statistics</h2>
+        <br><br><br>
         <figure class="chart-wrapper">
             <canvas id="lineChart"></canvas>
         </figure>
         <figure class="chart-wrapper">
             <canvas id="barChart" ></canvas>
         </figure>
+
+        <figure class="chart-wrapper">
+            <canvas id="cumulativeLineChart" ></canvas>
+        </figure>
+
+        <figure class="chart-wrapper">
+            <canvas id="cumulativeDeathChart" ></canvas>
+        </figure>
     </section>
 
 
     <section id="about">
-        <h2>About</h2>
+        <h2>Tietoa sivustosta</h2>
         <p>Lorem Ipsum</p>
         <iframe id="tartuntaVideo" src="https://www.youtube.com/embed/Q7dbLfSMe50?&autoplay=1&mute=1" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -122,7 +130,7 @@
     </section>
 
     <section id="contact">
-        <h2>Contact</h2>
+        <h2>Yhteystiedot</h2>
         <p>Lorem Ipsum</p>
         <ul>
             <li><figure width="150" height="200">
