@@ -3,11 +3,11 @@ const getConfirmedCasesDataObj = (confirmedCases) => {
     const confirmedCasesReversed = confirmedCases.reverse()
     let confirmedCasesDataObj = {byDistricts: {}, byDate: {}}
     confirmedCasesReversed
-    .map(confirmedCase => formatDateString(confirmedCase.date))
-    .forEach(date => { confirmedCasesDataObj["byDate"][date] =  0 })
+                .map(confirmedCase => formatDateString(confirmedCase.date))
+                .forEach(date => { confirmedCasesDataObj["byDate"][date] =  0 })
     confirmedCasesReversed
-    .map(confirmedCase => confirmedCase.healthCareDistrict)
-    .forEach(district => { confirmedCasesDataObj["byDistricts"][district] =  0 })
+                .map(confirmedCase => confirmedCase.healthCareDistrict)
+                .forEach(district => { confirmedCasesDataObj["byDistricts"][district] =  0 })
     confirmedCasesReversed.forEach((confirmedCase, i) => {
         const formattedConfirmedCaseDate = formatDateString(confirmedCase.date)
         if (formattedConfirmedCaseDate) {

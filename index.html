@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Tartuntatiedot.fi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.3/leaflet.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/main.css" rel="stylesheet">
@@ -14,11 +15,10 @@
 <header>
     <h1><a href="">Tartuntatiedot.fi</a></h1>
     <ul id="nav">
-        <li><a href="#dashboard">Map</a></li>
-        <li><a href="#statistics">Statistics</a></li>
-        <li><a href="#rss">News</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#dashboard">Kartta</a></li>
+        <li><a href="#statistics">Tilastot</a></li>
+        <li><a href="#about">Sovelluksesta</a></li>
+        <li><a href="#contact">Kontaktit</a></li>
     </ul>
     <ul id="flags">
         <li><a href="index.html"><img src="img/finicon.png"></a></li></img>
@@ -77,7 +77,7 @@
     </section>
 
     <section id="statistics">
-        <h2>Statistics</h2>
+        <h2>Tilastot</h2>
         <figure class="chart-wrapper">
             <canvas id="lineChart"></canvas>
         </figure>
@@ -86,87 +86,97 @@
         </figure>
     </section>
 
-
     <section id="about">
-        <h2>About</h2>
-        <p>Lorem Ipsum</p>
-        <iframe id="tartuntaVideo" src="https://www.youtube.com/embed/Q7dbLfSMe50?&autoplay=1&mute=1" frameborder="0"
+        <h2>Sovelluksesta</h2>
+        <p class="about-desctiption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, praesentium soluta, blanditiis tenetur quaerat enim nisi dolores vero error nihil reprehenderit ratione voluptates et. Quidem deserunt minus explicabo at nobis.</p>
+        <iframe id="tartuntaVideo" src="https://www.youtube.com/embed/Q7dbLfSMe50?&autoplay=0" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
         </iframe>
-        <ul>
-            <li><figure width="150" height="200">
-                <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
-                <figcaption>
-                    nimi
-                </figcaption>
-            </figure>
-            </li>
-            <li>
-                <figure width="150" height="200">
-                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
-                    <figcaption>
-                        nimi
-                    </figcaption>
-                </figure>
-            </li>
-            <li>
-                <figure width="150" height="200">
-                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
-                    <figcaption>
-                        nimi
-                    </figcaption>
-                </figure>
-            </li>
-        </ul>
+        <div class="about-figures-container">
+            <ul>
+                <li>
+                    <figure width="150" height="200" class="about-figure">
+                        <a href="assets/corona.png"><img src="assets/corona.png"></a>
+                        <figcaption>
+                            <h3>COVID-19 tilanne</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione voluptas laboriosam dicta beatae consequuntur exercitationem fugiat, assumenda architecto a ipsa voluptate iusto esse! Iste ea ut eum deserunt labore accusantium!</p>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure width="150" height="200" class="about-figure">
+                        <a href="assets/hospital.png"><img src="assets/hospital.png"></a>
+                        <figcaption>
+                            <h3>Tieto sairaanhoitopiireittäin</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione voluptas laboriosam dicta beatae consequuntur exercitationem fugiat, assumenda architecto a ipsa voluptate iusto esse! Iste ea ut eum deserunt labore accusantium!</p>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure width="150" height="200" class="about-figure">
+                        <a href="assets/spread.png"><img src="assets/spread.png"></a>
+                        <figcaption>
+                            <h3>Leviäminen</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione voluptas laboriosam dicta beatae consequuntur exercitationem fugiat, assumenda architecto a ipsa voluptate iusto esse! Iste ea ut eum deserunt labore accusantium!</p>
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+         </div>
     </section>
 
     <section id="contact">
-        <h2>Contact</h2>
-        <p>Lorem Ipsum</p>
-        <ul>
-            <li><figure width="150" height="200">
-                <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
-                <figcaption>
-                    nimi
-                </figcaption>
-            </figure>
-            </li>
-            <li>
-                <figure width="150" height="200">
-                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
+        <h2>Kontaktit</h2>
+        <p class="contact-desctiption">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos aut atque in eligendi tempora ratione amet aspernatur animi, excepturi, laudantium eius, laboriosam quia praesentium eum autem! Id doloribus eaque ea.</p>
+        <div class="contact-figures-container">
+            <ul>
+                <li><figure width="150" height="200" class="contact-figure">
+                    <a href="assets/maksim.jpg"><img src="assets/maksim.jpg"></a>
                     <figcaption>
-                        nimi
+                        <h3>Maksim Ilmast</h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, sunt quidem. Molestiae nobis eligendi praesentium, facere, doloribus ullam iure, nulla itaque ipsum deserunt quasi maxime amet adipisci voluptas ipsam rem.</p>
                     </figcaption>
                 </figure>
-            </li>
-            <li>
-                <figure width="150" height="200">
-                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
-                    <figcaption>
-                        nimi
-                    </figcaption>
-                </figure>
-            </li>
-        </ul>
+                </li>
+                <li>
+                    <figure width="150" height="200" class="contact-figure">
+                        <a href="assets/kerttuli.jpg"><img src="assets/kerttuli.jpg"></a>
+                        <figcaption>
+                            <h3>Kerttuli Ratilainen</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, sunt quidem. Molestiae nobis eligendi praesentium, facere, doloribus ullam iure, nulla itaque ipsum deserunt quasi maxime amet adipisci voluptas ipsam rem.</p>
+                        </figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure width="150" height="200" class="contact-figure">
+                        <a href="assets/maksim.jpg"><img src="assets/maksim.jpg"></a>
+                        <figcaption>
+                            <h3>Samuel Aitamaa</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. In, sunt quidem. Molestiae nobis eligendi praesentium, facere, doloribus ullam iure, nulla itaque ipsum deserunt quasi maxime amet adipisci voluptas ipsam rem.</p>    
+                        </figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </div>
     </section>
 </main>
 
 <footer>
-    <h4>Social media</h4>
-    <a href="#" class="fa fa-facebook"></a>
-    <a href="#" class="fa fa-twitter"></a>
-    <p>Copyright 2020</p>
-    <ul id="nav-footer">
-        <li><a href="#dashboard">Dashboard</a></li>
-        <li><a href="#statistics">Statistics</a></li>
-        <li><a href="#rss">News</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+    <ul class="footer-social">
+        <li><a href="http://facebook.com" target="_blank" class="fa fa-facebook footer-social-icon"></a></li>
+        <li><a href="http://twitter.com" target="_blank" class="fa fa-twitter footer-social-icon"></a></li>
+    </ul>
+    <p class="footer-copyright">Copyright © 2020</p>
+    <ul id="navfooter">
+        <li><a href="#dashboard">Kartta</a></li>
+        <li><a href="#statistics">Tilastot</a></li>
+        <li><a href="#about">Sovelluksesta</a></li>
+        <li><a href="#contact">Kontaktit</a></li>
     </ul>
 </footer>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.3/leaflet.js"></script>
 <script src="js/map.js"></script>
 <script src="js/chart.js"></script>
 </body>

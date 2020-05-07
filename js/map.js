@@ -192,7 +192,6 @@
             popupContent += feature.properties.popupContent;
           }
           layer.bindPopup(popupContent);
-
         },
       }).addTo(map);
 
