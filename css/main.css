@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 body {
@@ -8,9 +9,16 @@ body {
     font-size: 16px;
 }
 
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
 header {
+    padding: 1.5em 0;
+    flex-wrap: wrap;
     display: flex;
-    height: 75px;
+    height: 100%;
     width: 100%;
     justify-content: space-around;
     background-color: #10316b;
@@ -24,21 +32,29 @@ header > h1 {
 header > h1 > a {
     text-decoration: none;
     color: #e25822;
-    POSITION: relative;
-    left: 40px;
 }
 
 #nav {
     display: flex;
-    flex-direction: row;
-    position: relative;
-    right: 130px;
+    flex-wrap: wrap;
 }
 
 #nav > li {
     list-style: none;
-    margin: auto 3em;
+    margin: auto 2em;
 }
+
+@media only screen and (max-width: 570px) {
+    #nav > li {
+        margin: 0 1em 0 0;
+    }
+}
+
+#nav > li > a {
+    text-decoration: none;
+    color: #ececeb;
+}
+
 #flags {
     display: flex;
     flex-direction: row;
@@ -49,49 +65,33 @@ header > h1 > a {
     margin: 5px;
 }
 
-#nav > li > a {
-    text-decoration: none;
-    color: #ececeb;
-}
-
-article {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-
-.container {
-    width: 50%;
-    padding: 0 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-}
-
-
 .flex-container {
+    margin-top: 2em;
+    flex-wrap: wrap;
     display: flex;
 }
 
 .flex-child-info {
-    flex: 1;
-    border: 2px solid red;
     list-style-type: none;
-    background: #ececeb;
-    color: #e25822;
-    text-align: left;
-    font-size: 22px;
-    margin: 3px;
+    background: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: #222;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: center;
     min-width: 400px;
+    margin: 2em auto;
 }
 
 .flex-child-map {
     flex: 1;
-    border: 2px solid red;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-right: 20px;
     height: 60vh;
     min-width: 400px;
+    width: 100%;
+    height: 88vh;
+    margin: auto;
 }
 
 .flex-child-info > ul {
@@ -99,15 +99,16 @@ article {
     line-height: 200%;
 }
 
-
-
-.statistics {
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
+#rss {
+    margin: auto
 }
 
-#dashboard h2, #statistics h2, #about h2, #contact h2 {
+
+#statistics {
+    margin-top: 4em;
+}
+
+#statistics h2, #about h2, #contact h2 {
     color: #e25822;
     font-size: 2em;
     font-weight: 700;
@@ -115,20 +116,33 @@ article {
     font-family: 'Righteous', cursive;
 }
 
+.statistics-charts-wrap {
+    flex-wrap: wrap;
+    display: flex;
+}
+
 #statistics .chart-wrapper {
-    max-width: 1000px;
-    max-height: 500px;
+    min-width: 700px;
+    min-height: 400px;
     margin: 2em auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media only screen and (max-width: 700px) {
+    #statistics .chart-wrapper {
+        min-width: 30%;
+        min-height: 30%;
+    }
 }
 
 #about, #contact {
-    margin: 4em 0;
+    margin: 4em
 }
 
 #about .about-desctiption, #contact .contact-desctiption {
     text-align: center;
     color: #10316b;
-    width: 50%;
+    width: 80%;
     margin: 1em auto;
 }
 
@@ -136,6 +150,7 @@ article {
     width: 100%;
     text-align: center;
     min-height: 50vh;
+    margin: 1em auto;
 }
 
 .about-figures-container {
@@ -148,6 +163,7 @@ article {
 
 .about-figures-container ul li {
     list-style-type: none;
+    width: 100%;
 }
 
 .about-figure {
@@ -170,17 +186,6 @@ article {
     .about-figures-container ul {
         flex-direction: column;
     }
-}
-.chart-wrapper {
-    max-width: 1000px;
-    max-height: 500px;
-    min-width: 700px;
-    min-height: 400px;
-    margin: 2em auto;
-}
-#statistics {
-    flex-wrap: wrap;
-    display: flex;
 }
 
 @media only screen and (min-width: 900px) {
