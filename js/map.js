@@ -6,8 +6,8 @@
 
   //search for a Open Street Map
   let map = L.map('map', {
-    minZoom: 4,
-    maxZoom: 5
+    minZoom: 5,
+    maxZoom: 7
   });
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -15,7 +15,7 @@
   }).addTo(map);
 
   //Set mapview in the center of Finland
-  map.setView([65.5538179, 25.7496755], 4);
+  map.setView([65.5538179, 25.7496755], 5);
 
 
   map.createPane('labels');
@@ -48,22 +48,31 @@
       const confirmedCases = getConfirmedCases(formattedResponse);
       const healthCareDistricts = getConfirmedHCDistricts(confirmedCases);
       const cCases = getValuesBy(healthCareDistricts);
+      //console.log(confirmedCasesDataObj);
 
       //for html
       const p = document.querySelector('p');
 
       const totalc = formattedResponse.confirmed.length;
-      p.innerHTML += `<p><b>Vahvistetut tartunnat yhteensä: </b> ${totalc}</p>`;
+      p.innerHTML += `<color><b>Vahvistetut tartunnat yhteensä: </b><br><br><font color ='#10316b'> ${totalc}</color><br></p>`;
 
       const totald = formattedResponse.deaths.length;
-      p.innerHTML += `<p><b>Kuolleita yhteensä: </b></B>${totald}</p>`;
+      p.innerHTML += `<p><b>Kuolleita yhteensä: </b><br><br></B><font color ='#10316b'>${totald}</font></p>`;
+
+      const recovered = formattedResponse.recovered.length;
+      p.innerHTML += `<p><b>Parantuneita: </b><br><br></B><font color ='#10316b'>${recovered}</font></p>`;
+
+      /*const casesToday = formattedResponse.deaths.length;
+      p.innerHTML += `<p><b>Vahvistettuja tartuntoja tänään: </b><br><br></B><font color ='#10316b'>${totald}</font></p>`;
+      const deathsToday = formattedResponse.deaths.length;
+      p.innerHTML += `<p><b>Kuolleita tänään: </b><br><br></B><font color ='#10316b'>${totald}</font></p>`;*/
 
       const deathCases = getDeathCases(formattedResponse);
       const area = getDeathsbyArea(deathCases);
       const dCases = getValuesBy(area);
       p.innerHTML += `<p><b>Kuolleet yliopistosairaalan mukaan: </b></p>`;
         for (let [key, value] of dCases) {
-          p.innerHTML += `<p>${key} ${value}</p>`;
+          p.innerHTML += `<p>${key}:<font color ='#10316b'> ${value}</font></p>`;
         }
 
       const lastUpdate = formattedResponse.confirmed.pop().date;
@@ -117,6 +126,30 @@
     });
     return map;
   }
+  var legend = L.control({position: 'topright'});
+
+  legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [ 10, 50, 100, 200, 500, 1000, 3000],
+        labels = [];
+
+      labels.push(
+          '<i style="background:' + '#FED976 "></i>' + grades[0] + '-' + grades[1] + '<br>' +
+          '<i style="background:' + '#FEB24C "></i>' + grades[1] + '-' + grades[2] + '<br>' +
+          '<i style="background:' + '#FD8D3C "></i>' + grades[2] + '-' + grades[3] + '<br>' +
+          '<i style="background:' + '#FC4E2A "></i>' + grades[3] + '-' + grades[4] + '<br>' +
+          '<i style="background:' + '#E31A1C "></i>' + grades[4] + '-' + grades[5] + '<br>' +
+          '<i style="background:' + '#BD0026 "></i>' + grades[5] + '-' + grades[6] + '<br>' +
+          '<i style="background:' + '#800026 "></i>' + grades[6] + '+' + '<br>'
+      )
+
+
+    div.innerHTML = labels.join('<br>');
+    return div;
+  };
+
+  legend.addTo(map);
 
   //fetch coordinates of the health care districts
   //create map features
@@ -128,10 +161,29 @@
       if (!response.ok) throw new Error('jokin meni pieleen');
       const data = await response.json();
         L.geoJson(data, {
-          style: function(feature) {
-          return {color: '#e25822'};
+          style: function(feature, layer) {
+            const cases = myData.get(feature.properties.healthCareDistrict);
+            getColor(cases);
+          return {
+            color:
+            cases > 3000 ? '#800026' :
+                cases > 1000  ? '#BD0026' :
+                    cases > 500  ? '#E31A1C' :
+                        cases > 200  ? '#FC4E2A' :
+                            cases > 100   ? '#FD8D3C' :
+                                cases > 50   ? '#FEB24C' :
+                                    cases > 10   ? '#FED976' :
+                                        '#FFEDA0',
+            weight: 2,
+            opacity: 1,
+            dashArray: '3',
+            fillOpacity: 0.7
+            //color: '#e25822'
+          };
         },
+
         onEachFeature: function(feature, layer) {
+          //console.log("d:" + myData.get(feature.properties.healthCareDistrict));
           let popupContent = '<h3>Tartunnat maakunnassa: </h3> ' +
               '<h4>' + feature.properties.healthCareDistrict + ' ' +
               myData.get(feature.properties.healthCareDistrict) + '</h4>';
@@ -146,6 +198,19 @@
     } catch (error) {
       console.log(error);
     }
+  }
+  function getColor(cases) {
+  return {
+    color:
+    cases > 3000 ? '#800026' :
+      cases > 1000 ? '#BD0026' :
+          cases > 500 ? '#E31A1C' :
+              cases > 200 ? '#FC4E2A' :
+                  cases > 100 ? '#FD8D3C' :
+                      cases > 50 ? '#FEB24C' :
+                          cases > 10 ? '#FED976' :
+                              '#FFEDA0'
+  }
   }
 
   //needed in order to fetches to function
