@@ -55,6 +55,10 @@ header > h1 > a {
     color: #ececeb;
 }
 
+#nav > li > a:hover {
+    color: #e25822;
+}
+
 #flags {
     display: flex;
     flex-direction: row;
@@ -67,6 +71,7 @@ header > h1 > a {
 
 .flex-container {
     margin-top: 2em;
+    padding: 0 2em;
     flex-wrap: wrap;
     display: flex;
 }
@@ -242,7 +247,7 @@ header > h1 > a {
 }
 
 footer {
-    min-height: 170px;
+    min-height: 200px;
     background-color: #10316b;
     display: flex;
     justify-content: space-around;
@@ -292,4 +297,8 @@ footer {
 #navfooter > li > a {
     text-decoration: none;
     color: #ececeb;
+}
+
+#navfooter > li > a:hover {
+    color: #e25822;
 }
