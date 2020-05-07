@@ -1,13 +1,10 @@
 'use strict';
 
-(function ( ){
-
-
-
+(function() {
   //search for a Open Street Map
   let map = L.map('map', {
     minZoom: 5,
-    maxZoom: 6
+    maxZoom: 6,
   });
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -17,22 +14,20 @@
   //Set mapview in the center of Finland
   map.setView([65.5538179, 25.7496755], 5);
 
-
   map.createPane('labels');
   map.getPane('labels').style.zIndex = 650;
   map.getPane('labels').style.pointerEvents = 'none';
 
-  let positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
-    attribution: '©OpenStreetMap, ©CartoDB'
-  }).addTo(map);
+  let positron = L.tileLayer(
+      'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+        attribution: '©OpenStreetMap, ©CartoDB',
+      }).addTo(map);
 
-  let positronLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
-    attribution: '©OpenStreetMap, ©CartoDB',
-    pane: 'labels'
-  }).addTo(map);
-
-
-
+  let positronLabels = L.tileLayer(
+      'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
+        attribution: '©OpenStreetMap, ©CartoDB',
+        pane: 'labels',
+      }).addTo(map);
 
   //fetch confirmed and death cases
   //search the number of cases by Health Care District or University Hospital
@@ -50,26 +45,32 @@
       const cCases = getValuesBy(healthCareDistricts);
 
       //for html
-      const p = document.querySelector('p');
+      const div = document.querySelector('#info');
 
+      let content = `<ul>`;
       const totalc = formattedResponse.confirmed.length;
-      p.innerHTML += `<p><b>Vahvistetut tartunnat yhteensä: </b> ${totalc}</p>`;
+      content += `<li><b>Vahvistetut tartunnat yhteensä: </b> ${totalc}</li>`;
 
       const totald = formattedResponse.deaths.length;
-      p.innerHTML += `<p><b>Kuolleita yhteensä: </b></B>${totald}</p>`;
+      content += `<li><b>Kuolleita yhteensä: </b>${totald}</li>`;
 
       const deathCases = getDeathCases(formattedResponse);
       const area = getDeathsbyArea(deathCases);
       const dCases = getValuesBy(area);
-      p.innerHTML += `<p><b>Kuolleet yliopistosairaalan mukaan: </b></p>`;
+      content += `<li><b>Kuolleet yliopistosairaalan mukaan: </b></li>`;
+      content += `<li>`;
+      content += `<ul>`;
       for (let [key, value] of dCases) {
-        p.innerHTML += `<p>${key} ${value}</p>`;
+        content += `<li>${key} ${value}</li>`;
       }
-
+      content += `</ul>`;
+      content += `</li>`;
       const lastUpdate = formattedResponse.confirmed.pop().date;
       let d = new Date(lastUpdate);
-      p.innerHTML += `<p><b>Tiedot päivitetty: </b> ${Intl.DateTimeFormat(
-          ['ban', 'id']).format(d)}</p>`;
+      content += `<li><b>Tiedot päivitetty: </b> ${Intl.DateTimeFormat(
+          ['ban', 'id']).format(d)}</li>`;
+      content += `</ul>`;
+      div.innerHTML = content;
 
       return cCases;
 
