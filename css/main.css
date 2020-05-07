@@ -95,8 +95,73 @@ article {
     margin: 2em auto;
 }
 
+p{
+    font-family: Roboto;
+    font-size: 22px;
+    text-align: center;
+    line-height: 200%;
+}
+
 .contact, .about {
     list-style-type: none;
+}
+
+.flex-container-contact {
+    display: flex;
+}
+
+.flex-child-1{
+    flex: 1;
+}
+
+.flex-child-2{
+    flex: 1;
+}
+
+.flex-child-3{
+    flex: 1;
+}
+
+
+#contact > ul {
+    margin: 0;
+    padding: 16px 30px;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+footer {
+    display: flex;
+    height: 75px;
+    width: 100%;
+    justify-content: space-around;
+    background-color: #10316b;
+}
+
+footer > h1 {
+    margin: auto 0;
+    font-family: 'Righteous', cursive;
+}
+
+footer> h1 > a {
+    text-decoration: none;
+    color: #e25822;
+}
+
+#nav-footer {
+    display: flex;
+    flex-direction: row;
+}
+
+#nav-footer > li {
+    list-style: none;
+    margin: auto 2em;
+}
+
+#nav-footer > li > a {
+    text-decoration: none;
+    color: #ececeb;
 }
 
 

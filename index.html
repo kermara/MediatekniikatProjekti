@@ -14,16 +14,16 @@
 <header>
     <h1><a href="">Tartuntatiedot.fi</a></h1>
     <ul id="nav">
-        <li><a href="#dashboard">Dashboard</a></li>
-        <li><a href="#statistics">Statistics</a></li>
-        <li><a href="#rss">News</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#dashboard">Tartuntatiedot</a></li>
+        <li><a href="#statistics">Tilastot</a></li>
+        <li><a href="#rss">Uutiset</a></li>
+        <li><a href="#about">Lisätietoa</a></li>
+        <li><a href="#contact">Yhteystiedot</a></li>
     </ul>
 </header>
 <main>
     <section id="dashboard">
-        <h2>Dashboard</h2>
+        <h2>Tartuntatiedot</h2>
         <div class="flex-container">
             <div class="flex-child-info" id="info">
             </div>
@@ -31,7 +31,7 @@
         </div>
     </section>
     <section id="statistics">
-        <h2>Statistics</h2>
+        <h2>Tilastot</h2>
         <figure class="chart-wrapper">
             <canvas id="lineChart"></canvas>
         </figure>
@@ -42,7 +42,7 @@
 
 
     <section id="rss">
-        <h2>News</h2>
+        <h2>Uutiset</h2>
         <script type="text/javascript">
           rssfeed_url = new Array();
           rssfeed_url[0] = 'https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/infektio-ja-rokotusuutiset/uutisia-aiheesta-koronavirus-covid-19?p_p_id=newsarchive_WAR_newsarchive&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_cacheability=cacheLevelPage&p_p_resource_id=rss';
@@ -87,65 +87,40 @@
     </section>
 
     <section id="about">
-        <h2>About</h2>
-        <p>Lorem Ipsum</p>
+        <h2>Lisätietoa</h2>
+        <p>Tartuntatiedot.fi on Metropolian opiskelijatyönä tehty sovellus, jonka tarkoituksena on jakaa ajankohtaista tietoa Suomen koronatilanteesta.<br>
+            Tartuntatiedot on ryhmitelty sairaanhoitopiireittäin. Lisäksi löytyy sekä yleisiä että päiväkohtaisia tilastotietoja kokonaistartuntatilanteesta.<br>
+            Sovellus mahdollistaa aiheeseen liittyvää uutisvirran seuraamisen.</p>
         <iframe id="tartuntaVideo" src="https://www.youtube.com/embed/Q7dbLfSMe50?&autoplay=1&mute=1" frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
         </iframe>
-        <ul>
-            <li>
-                <figure width="150" height="200">
-                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
-                    <figcaption>
-                        nimi
-                    </figcaption>
-                </figure>
-            </li>
-            <li>
-                <figure width="150" height="200">
-                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
-                    <figcaption>
-                        nimi
-                    </figcaption>
-                </figure>
-            </li>
-            <li>
-                <figure width="150" height="200">
-                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
-                    <figcaption>
-                        nimi
-                    </figcaption>
-                </figure>
-            </li>
-        </ul>
     </section>
-
     <section id="contact">
-        <h2>Contact</h2>
-        <p>Lorem Ipsum</p>
-        <ul>
-            <li>
+        <h2>Yhteystiedot</h2>
+
+        <ul class="flex-container-contact">
+            <li class="flex-child-1">
                 <figure width="150" height="200">
-                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
+                    <a href="img/saturn1.jpg"><img src="img/saturn1.jpg"></a>
                     <figcaption>
-                        nimi
+                        Samuel
                     </figcaption>
                 </figure>
             </li>
-            <li>
+            <li class="flex-child-2">
                 <figure width="150" height="200">
-                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
+                    <a href="img/saturn2.jpg"><img src="img/saturn2.jpg"></a>
                     <figcaption>
-                        nimi
+                        Maksim
                     </figcaption>
                 </figure>
             </li>
-            <li>
+            <li class="flex-child-3">
                 <figure width="150" height="200">
-                    <a href="img/kuva.jpg"><img src="img/kuva.jpg"></a>
+                    <a href="img/saturn3.jpg"><img src="img/saturn3.jpg"></a>
                     <figcaption>
-                        nimi
+                        Kerttuli
                     </figcaption>
                 </figure>
             </li>
@@ -154,16 +129,20 @@
 </main>
 
 <footer>
-    <h4>Social media</h4>
-    <a href="#" class="fa fa-facebook"></a>
-    <a href="#" class="fa fa-twitter"></a>
-    <p>Copyright 2020</p>
+    <!--
+   <div>
+      <  <h4>Some</h4>
+   <a href="#" class="fa fa-facebook"></a>
+   <a href="#" class="fa fa-twitter"></a>
+   </div>
+   -->
+    <p style="color:#ececeb">Copyright 2020</p>
     <ul id="nav-footer">
-        <li><a href="#dashboard">Dashboard</a></li>
-        <li><a href="#statistics">Statistics</a></li>
-        <li><a href="#rss">News</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#dashboard">Tartuntatiedot</a></li>
+        <li><a href="#statistics">Tilastot</a></li>
+        <li><a href="#rss">Uutiset</a></li>
+        <li><a href="#about">Lisätietoa</a></li>
+        <li><a href="#contact">Yhteystiedot</a></li>
     </ul>
 </footer>
 
