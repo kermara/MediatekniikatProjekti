@@ -24,6 +24,8 @@ header > h1 {
 header > h1 > a {
     text-decoration: none;
     color: #e25822;
+    POSITION: relative;
+    left: 40px;
 }
 
 #nav {
@@ -169,6 +171,17 @@ article {
         flex-direction: column;
     }
 }
+.chart-wrapper {
+    max-width: 1000px;
+    max-height: 500px;
+    min-width: 700px;
+    min-height: 400px;
+    margin: 2em auto;
+}
+#statistics {
+    flex-wrap: wrap;
+    display: flex;
+}
 
 @media only screen and (min-width: 900px) {
     .about-figures-container ul {
@@ -275,67 +288,3 @@ footer {
     text-decoration: none;
     color: #ececeb;
 }
-/*
-#flags {
-    display: flex;
-    flex-direction: row;
-}
-#flags > li {
-    list-style: none;
-    margin: 5px;
-}
-article {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.container {
-    width: 50%;
-    padding: 0 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-}
-#map {
-    width: 30%;
-    height: 80vh;
-}
-#info-text{
-    color: #e25822;
-    text-align: center;
-    width: 30%;
-    float: left;
-}
-#rss {
-    float: right;
-    position: relative;
-    right: 100px;
-}
-.legend {
-    line-height: 18px;
-    color: #555;
-}
-.legend i {
-    width: 18px;
-    height: 18px;
-    float: left;
-    margin-right: 8px;
-    opacity: 0.7;
-}
-#rss {
-    float: right;
-    position: relative;
-    right: 100px;
-}
-.legend {
-    line-height: 18px;
-    color: #555;
-}
-.legend i {
-    width: 18px;
-    height: 18px;
-    float: left;
-    margin-right: 8px;
-    opacity: 0.7;
-}
-*/

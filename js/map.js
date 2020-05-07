@@ -176,12 +176,10 @@
             opacity: 1,
             dashArray: '3',
             fillOpacity: 0.7
-            //color: '#e25822'
           };
         },
 
         onEachFeature: function(feature, layer) {
-          //console.log("d:" + myData.get(feature.properties.healthCareDistrict));
           let popupContent = '<h3>Tartunnat maakunnassa: </h3> ' +
               '<h4>' + feature.properties.healthCareDistrict + ' ' +
               myData.get(feature.properties.healthCareDistrict) + '</h4>';
