@@ -9,8 +9,6 @@ body {
 }
 
 header {
-    padding: 1.5em 0;
-    flex-wrap: wrap;
     display: flex;
     height: 75px;
     width: 100%;
@@ -30,18 +28,23 @@ header > h1 > a {
 
 #nav {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    position: relative;
+    right: 130px;
 }
 
 #nav > li {
     list-style: none;
-    margin: auto 2em;
+    margin: auto 3em;
+}
+#flags {
+    display: flex;
+    flex-direction: row;
 }
 
-@media only screen and (max-width: 570px) {
-    #nav > li {
-        margin: 0 1em 0 0;
-    }
+#flags > li {
+    list-style: none;
+    margin: 5px;
 }
 
 #nav > li > a {
@@ -49,17 +52,52 @@ header > h1 > a {
     color: #ececeb;
 }
 
-#map {
-    width: 100%;
-    height: 88vh;
-    flex: 4;
+article {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.aside-map {
-    flex: 1;
-    text-align: center;
-    width: 100%;
+
+.container {
+    width: 50%;
     padding: 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+#map {
+    width: 30%;
+    height: 80vh;
+}
+
+#info-text{
+    color: #e25822;
+    text-align: center;
+    width: 30%;
+    float: left;
+
+}
+#rss {
+    float: right;
+    position: relative;
+    right: 100px;
+}
+
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+.statistics {
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
@@ -231,6 +269,7 @@ footer {
     text-decoration: none;
     color: #ececeb;
 }
+/*
 
 #flags {
     display: flex;
@@ -242,10 +281,7 @@ footer {
     margin: 5px;
 }
 
-#nav > li > a {
-    text-decoration: none;
-    color: #ececeb;
-}
+
 
 article {
     display: flex;
@@ -291,3 +327,24 @@ article {
     margin-right: 8px;
     opacity: 0.7;
 }
+
+#rss {
+    float: right;
+    position: relative;
+    right: 100px;
+}
+
+
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+*/

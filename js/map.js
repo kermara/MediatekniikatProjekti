@@ -64,7 +64,6 @@
 
       /*const casesToday = formattedResponse.deaths.length;
       p.innerHTML += `<p><b>Vahvistettuja tartuntoja tänään: </b><br><br></B><font color ='#10316b'>${totald}</font></p>`;
-
       const deathsToday = formattedResponse.deaths.length;
       p.innerHTML += `<p><b>Kuolleita tänään: </b><br><br></B><font color ='#10316b'>${totald}</font></p>`;*/
 
@@ -192,6 +191,7 @@
             popupContent += feature.properties.popupContent;
           }
           layer.bindPopup(popupContent);
+
         },
       }).addTo(map);
 
