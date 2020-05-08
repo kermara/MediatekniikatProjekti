@@ -60,7 +60,7 @@
       const totald = formattedResponse.deaths.length;
       content += `<li><strong>Kuolleita yhteensä: </strong><span style="color: #e25822">${totald}</span></li>`;
 
-     /* const deathCases = getDeathCases(formattedResponse);
+     const deathCases = getDeathCases(formattedResponse);
       const area = getDeathsbyArea(deathCases);
       const dCases = getValuesBy(area);
       content += `<li><b>Kuolleet yliopistosairaalan mukaan: </b></li>`;
@@ -70,7 +70,7 @@
         content += `<li>${key}: <span style="color: #e25822">${value}</span></li>`;
       }
       content += `</ul>`;
-      content += `</li>`; */
+      content += `</li>`; 
       const lastUpdate = formattedResponse.confirmed.pop().date;
       let d = new Date(lastUpdate);
       content += `<li><b>Tiedot päivitetty: </b> ${Intl.DateTimeFormat(

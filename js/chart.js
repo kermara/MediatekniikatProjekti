@@ -164,8 +164,7 @@ const drawCharts = (dataObj) => {
                 borderColor: deathCasesByDistrictColors,
                 borderWidth: 1
             }]
-        },
-        options: deathChartOptions
+        }
     }),
     new Chart(cumulativeLineChartCtx, {
         type: 'line',
