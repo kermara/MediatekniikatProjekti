@@ -52,15 +52,15 @@
 
       const casesLastDate = confirmedLastDate(confirmedCases);
       console.log(casesLastDate);
-      content += `<li><b>Viimeisen vrk:n vahvistetut tartunnat: </b> ${casesLastDate}</li>`;
+      content += `<li><strong>Viimeisen vrk:n vahvistetut tartunnat: </strong> <span style="color: #e25822">${casesLastDate}</span></li>`;
 
       const totalc = formattedResponse.confirmed.length;
-      content += `<li><strong>Vahvistetut tartunnat yhteensä: </strong> ${totalc}</li>`;
+      content += `<li><strong>Vahvistetut tartunnat yhteensä: </strong> <span style="color: #e25822">${totalc}</span></li>`;
 
       const totald = formattedResponse.deaths.length;
-      content += `<li><strong>Kuolleita yhteensä: </strong>${totald}</li>`;
+      content += `<li><strong>Kuolleita yhteensä: </strong><span style="color: #e25822">${totald}</span></li>`;
 
-      const deathCases = getDeathCases(formattedResponse);
+     /* const deathCases = getDeathCases(formattedResponse);
       const area = getDeathsbyArea(deathCases);
       const dCases = getValuesBy(area);
       content += `<li><b>Kuolleet yliopistosairaalan mukaan: </b></li>`;
@@ -70,7 +70,7 @@
         content += `<li>${key}: <span style="color: #e25822">${value}</span></li>`;
       }
       content += `</ul>`;
-      content += `</li>`;
+      content += `</li>`; */
       const lastUpdate = formattedResponse.confirmed.pop().date;
       let d = new Date(lastUpdate);
       content += `<li><b>Tiedot päivitetty: </b> ${Intl.DateTimeFormat(

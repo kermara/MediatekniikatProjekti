@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
@@ -14,8 +13,19 @@ ul {
     list-style-type: none;
 }
 
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
 header {
-    padding: 1.5em 0;
     flex-wrap: wrap;
     display: flex;
     height: 100%;
@@ -77,20 +87,19 @@ header > h1 > a {
     text-align: center;
     min-width: 400px;
     margin: 2em auto;
-    max-height: 550px;
+    max-width: 400px;
 }
 
 .flex-child-map {
     flex: 1;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-right: 20px;
-    height: 60vh;
     max-width: 400px;
     width: 100%;
-    height: 88vh;
+    height: 70vh;
     margin: auto;
     min-width: 400px;
-    max-height: 900px;
+    align-items: center;
+    max-height: 600px;
 }
 
 .flex-child-info > ul {
@@ -99,7 +108,8 @@ header > h1 > a {
 }
 
 #rss {
-    margin: 2em auto 0 auto
+    margin: 2em auto 0 auto;
+    align-items: center;
 }
 
 
@@ -117,7 +127,10 @@ header > h1 > a {
 
 .graph-charts-wrap {
     flex-wrap: wrap;
-    display: flex;
+    display: inline-block;
+    width: 700px;
+    min-height: 400px;
+    min-width: 500px;
 }
 
 #graph .chart-wrapper {

@@ -70,7 +70,7 @@ const confirmedCasesByDateLineChartCtx = document.querySelector('#confirmedCases
 const confirmedCasesByDistrictBarChartCtx = document.querySelector('#confirmedCasesByDistrictBarChart').getContext('2d');
 
 const deathCasesByDateLineChartCtx = document.querySelector('#deathCasesByDateLineChart').getContext('2d');
-const deathCasesByDistrictBarChartCtx = document.querySelector('#deathCasesByDistrictBarChart').getContext('2d');
+const deathCasesByDistrictDoughnutChartCtx = document.querySelector('#deathCasesByDistrictDoughnutChart').getContext('2d');
 
 const cumulativeLineChartCtx = document.querySelector('#cumulativeLineChart').getContext('2d');
 const deathCasesCumulativeLineChartCtx = document.querySelector('#deathCasesCumulativeLineChart').getContext('2d');
@@ -99,6 +99,9 @@ const deathChartOptions = {
 
 // colors required to highlight the bar chart values
 const confirmedCasesByDistrictBarColors = ["#10316b", "#000000", "#e25822", "#ececeb", "#f6f578", "#f6d743", "#649d66", "#06623b", "#10316b", "#000000", "#e25822", "#ececeb", "#f6f578", "#f6d743", "#649d66", "#06623b", "#10316b", "#000000", "#e25822", "#ececeb", "#f6f578", "#f6d743"]
+
+const deathCasesByDistrictColors = ["#10316b", "#000000", "#e25822", "#ececeb", "#363636"]
+
 
 const drawCharts = (dataObj) => {
     // initiation of chart objects that are responsible for chart illustrations
@@ -149,16 +152,16 @@ const drawCharts = (dataObj) => {
         },
         options: deathChartOptions
     })
-    new Chart(deathCasesByDistrictBarChartCtx, {
-        type: 'bar',
+    new Chart(deathCasesByDistrictDoughnutChartCtx, {
+        type: 'doughnut',
         data: {
             labels: Object.keys(dataObj["deathCasesByArea"]),
             datasets: [{
                 label: 'Vahvistetut kuolemat tässä sairaanhoitopiirissä',
                 fill: false,
                 data: Object.values(dataObj["deathCasesByArea"]),
-                borderColor: "#222",
-                backgroundColor: "#222",
+                backgroundColor: deathCasesByDistrictColors,
+                borderColor: deathCasesByDistrictColors,
                 borderWidth: 1
             }]
         },
