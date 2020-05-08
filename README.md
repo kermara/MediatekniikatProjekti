@@ -11,7 +11,10 @@ Dashboard application that is meant to track the COVID-19 situation around the g
 
 ### Contributors
 
-- Maksim Ilmast
-- Samuel Aitamaa 
-- Kerttuli Ratilainen
+- Maksim Ilmast - charts, design, content
+- Samuel Aitamaa - rss, charts, map, design, video advertising
+- Kerttuli Ratilainen - map, information billboard, design, content, video advertising
 
+### Deployed version
+
+**http://users.metropolia.fi/~maksimi/tartuntatiedot.fi/**
