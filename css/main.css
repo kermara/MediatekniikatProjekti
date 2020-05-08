@@ -17,6 +17,11 @@ ul {
 >>>>>>> 74bda72eb2a9421a161b6e450ca5e4761f4d9b3f
 }
 
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
 header {
     padding: 1.5em 0;
     flex-wrap: wrap;
@@ -45,6 +50,7 @@ header > h1 > a {
 #nav > li {
     list-style: none;
     margin: auto 2em;
+<<<<<<< HEAD
 }
 
 @media only screen and (max-width: 570px) {
@@ -65,12 +71,74 @@ header > h1 > a {
 #flags {
     display: flex;
     flex-direction: row;
+=======
+>>>>>>> master
+}
+
+@media only screen and (max-width: 570px) {
+    #nav > li {
+        margin: 0 1em 0 0;
+    }
+}
+
+.flex-container {
+    margin-top: 2em;
+    padding: 0 2em;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+<<<<<<< HEAD
+@media only screen and (max-width: 440px) {
+    .flex-container {
+        padding: 0;
+    }
+}
+
+.flex-child-info {
+    list-style-type: none;
+    background: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: #222;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: center;
+    min-width: 400px;
+    margin: 2em auto;
+}
+
+.flex-child-map {
+    flex: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-right: 20px;
+    height: 60vh;
+    min-width: 400px;
+    width: 100%;
+    height: 88vh;
+    margin: auto;
+}
+
+.flex-child-info > ul {
+    list-style-type: none;
+    line-height: 200%;
+}
+
+<<<<<<< HEAD
+=======
+#nav > li > a:hover {
+    color: #e25822;
+}
+
+#flags {
+    display: flex;
+    flex-direction: row;
 }
 
 #flags > li {
     list-style: none;
     margin: 5px;
 }
+>>>>>>> master
 
 .flex-container {
     margin-top: 2em;
@@ -113,46 +181,16 @@ header > h1 > a {
     line-height: 200%;
 }
 
-<<<<<<< HEAD
-
-.flex-container {
-    display: flex;
-}
-
-.flex-child-info {
-    flex: 1;
-    border: 2px solid red;
-    list-style-type: none;
-    background: #ececeb;
-    color: #e25822;
-    text-align: left;
-    font-size: 22px;
-    margin: 3px;
-    min-width: 400px;
-}
-
-.flex-child-map {
-    flex: 1;
-    border: 2px solid red;
-    margin-right: 20px;
-    height: 60vh;
-    min-width: 400px;
-}
-
-.flex-child-info > ul {
-    list-style-type: none;
-    line-height: 200%;
+#rss {
+    margin: auto
 }
 
 
-
-.statistics {
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
+#graph {
+    margin-top: 4em;
 }
 
-#dashboard h2, #statistics h2, #about h2, #contact h2 {
+#graph h2, #about h2, #contact h2, #tilastot h2  {
     color: #e25822;
     font-size: 2em;
     font-weight: 700;
@@ -160,13 +198,27 @@ header > h1 > a {
     font-family: 'Righteous', cursive;
 }
 
-#statistics .chart-wrapper {
-    max-width: 1000px;
-    max-height: 500px;
+.graph-charts-wrap {
+    flex-wrap: wrap;
+    display: flex;
+}
+
+#graph .chart-wrapper {
+    min-width: 700px;
+    min-height: 400px;
     margin: 2em auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media only screen and (max-width: 700px) {
+    #graph .chart-wrapper {
+        min-width: 30%;
+        min-height: 30%;
+    }
 }
 
 #about, #contact {
+<<<<<<< HEAD
     margin: 4em 0;
 =======
 #rss {
@@ -208,16 +260,23 @@ header > h1 > a {
 #about, #contact {
     margin: 4em
 >>>>>>> 74bda72eb2a9421a161b6e450ca5e4761f4d9b3f
+=======
+    margin: 4em
+>>>>>>> master
 }
 
 #about .about-desctiption, #contact .contact-desctiption {
     text-align: center;
     color: #10316b;
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 50%;
 =======
     width: 80%;
 >>>>>>> 74bda72eb2a9421a161b6e450ca5e4761f4d9b3f
+=======
+    width: 80%;
+>>>>>>> master
     margin: 1em auto;
 }
 
@@ -226,9 +285,13 @@ header > h1 > a {
     text-align: center;
     min-height: 50vh;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     margin: 1em auto;
 >>>>>>> 74bda72eb2a9421a161b6e450ca5e4761f4d9b3f
+=======
+    margin: 1em auto;
+>>>>>>> master
 }
 
 .about-figures-container {
@@ -242,6 +305,10 @@ header > h1 > a {
 .about-figures-container ul li {
     list-style-type: none;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    width: 100%;
+>>>>>>> master
 }
 
 .about-figure {
@@ -265,6 +332,7 @@ header > h1 > a {
         flex-direction: column;
     }
 }
+<<<<<<< HEAD
 .chart-wrapper {
     max-width: 1000px;
     max-height: 500px;
@@ -312,6 +380,8 @@ header > h1 > a {
     display: flex;
     margin: 0 auto;
 }
+=======
+>>>>>>> master
 
 <<<<<<< HEAD
 @media only screen and (min-width: 900px) {
@@ -368,7 +438,7 @@ header > h1 > a {
 }
 
 footer {
-    min-height: 170px;
+    min-height: 200px;
     background-color: #10316b;
     display: flex;
     justify-content: space-around;
@@ -419,6 +489,7 @@ footer {
     text-decoration: none;
     color: #ececeb;
 }
+<<<<<<< HEAD
 =======
 .contact-figures-container ul li {
     list-style-type: none;
@@ -510,8 +581,13 @@ footer {
     text-decoration: none;
     color: #ececeb;
 }
+=======
+>>>>>>> master
 
 #navfooter > li > a:hover {
     color: #e25822;
 }
+<<<<<<< HEAD
 >>>>>>> 74bda72eb2a9421a161b6e450ca5e4761f4d9b3f
+=======
+>>>>>>> master
