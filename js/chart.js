@@ -29,8 +29,7 @@ const getConfirmedCasesDataObj = (confirmedCases, deathCases) => {
     })
     deathCasesReversed.forEach((deathCase, _) => {
         const formattedDeathCaseDate = formatDateString(deathCase.date)
-        if (formattedDeathCaseDate) {
-            // incrementing data object depending on death cases on that particular date
+        if (formattedDeathCaseDate && typeof dataObject["deathCasesByDate"][formattedDeathCaseDate] !== "undefined") {
             dataObject["deathCasesByDate"][formattedDeathCaseDate] += 1
         }
         // incrementing data object depending on a health care district where the death case occured
@@ -54,17 +53,17 @@ async function getDataObj () {
     }
 }
 
-// returns all cases in progression
+// returns all confirmed cases in progression
 const getTotalCases = (dataObj) => {
     const cumulativeSum = (sum => value => sum += value)(0);
     return Object.values(dataObj["confirmedCasesByDate"]).reverse().map(cumulativeSum)
 }
 
+// returns all death cases in progression
 const getTotalDeaths = (dataObj) => {
     const cumulativeSum = (sum => value => sum += value)(0);
-    return Object.values(dataObj["deathCasesByDate"]).map(cumulativeSum)
+    return Object.values(dataObj["deathCasesByDate"]).reverse().map(cumulativeSum)
 }
-
 
 // contexts of the chart pointing element
 const confirmedCasesByDateLineChartCtx = document.querySelector('#confirmedCasesByDateLineChart').getContext('2d');
@@ -74,8 +73,9 @@ const deathCasesByDateLineChartCtx = document.querySelector('#deathCasesByDateLi
 const deathCasesByDistrictBarChartCtx = document.querySelector('#deathCasesByDistrictBarChart').getContext('2d');
 
 const cumulativeLineChartCtx = document.querySelector('#cumulativeLineChart').getContext('2d');
+const deathCasesCumulativeLineChartCtx = document.querySelector('#deathCasesCumulativeLineChart').getContext('2d');
 
-const chartOptions = {
+const caseChartOptions = {
     scales: {
         yAxes: [{
             scaleLabel: {
@@ -86,8 +86,19 @@ const chartOptions = {
     }
 }
 
+const deathChartOptions = {
+    scales: {
+        yAxes: [{
+            scaleLabel: {
+                display: true,
+                labelString: "Vahvistetut kuolemat"
+            }
+        }]
+    }
+}
+
 // colors required to highlight the bar chart values
-const barColors = ["#10316b", "#000000", "#e25822", "#ececeb", "#f6f578", "#f6d743", "#649d66", "#06623b", "#10316b", "#000000", "#e25822", "#ececeb", "#f6f578", "#f6d743", "#649d66", "#06623b", "#10316b", "#000000", "#e25822", "#ececeb", "#f6f578", "#f6d743"]
+const confirmedCasesByDistrictBarColors = ["#10316b", "#000000", "#e25822", "#ececeb", "#f6f578", "#f6d743", "#649d66", "#06623b", "#10316b", "#000000", "#e25822", "#ececeb", "#f6f578", "#f6d743", "#649d66", "#06623b", "#10316b", "#000000", "#e25822", "#ececeb", "#f6f578", "#f6d743"]
 
 const drawCharts = (dataObj) => {
     // initiation of chart objects that are responsible for chart illustrations
@@ -104,7 +115,7 @@ const drawCharts = (dataObj) => {
                 borderWidth: 1
             }]
         },
-        options: chartOptions
+        options: caseChartOptions
     })
     new Chart(confirmedCasesByDistrictBarChartCtx, {
         type: 'bar',
@@ -117,26 +128,26 @@ const drawCharts = (dataObj) => {
                     radius: 0
                 },
                 data: Object.values(dataObj["confirmedCasesByDistricts"]),
-                backgroundColor: barColors,
-                borderColor: barColors,
+                backgroundColor: confirmedCasesByDistrictBarColors,
+                borderColor: confirmedCasesByDistrictBarColors,
                 borderWidth: 1
             }]
         },
-        options: chartOptions
+        options: caseChartOptions
     })
     new Chart(deathCasesByDateLineChartCtx, {
         type: 'line',
         data: {
             labels: Object.keys(dataObj["deathCasesByDate"]).reverse(),
             datasets: [{
-                label: 'Vahvistetut kuolemat yhteensä Suomessa',
+                label: 'Vahvistetut kuolemat tänä päivänä',
                 fill: false,
-                data: getTotalDeaths(dataObj),
+                data: Object.values(dataObj["deathCasesByDate"]).reverse(),
                 borderColor: "#222",
                 borderWidth: 1
             }]
         },
-        options: chartOptions
+        options: deathChartOptions
     })
     new Chart(deathCasesByDistrictBarChartCtx, {
         type: 'bar',
@@ -151,7 +162,7 @@ const drawCharts = (dataObj) => {
                 borderWidth: 1
             }]
         },
-        options: chartOptions
+        options: deathChartOptions
     }),
     new Chart(cumulativeLineChartCtx, {
         type: 'line',
@@ -165,7 +176,21 @@ const drawCharts = (dataObj) => {
                 borderWidth: 1
             }]
         },
-        options: chartOptions
+        options: caseChartOptions
+    }),
+    new Chart(deathCasesCumulativeLineChartCtx, {
+        type: 'line',
+        data: {
+            labels: Object.keys(dataObj["deathCasesByDate"]).reverse(),
+            datasets: [{
+                label: 'Vahvistetut kuolemat yhteensä Suomessa',
+                fill: false,
+                data: getTotalDeaths(dataObj),
+                borderColor: "#222",
+                borderWidth: 1
+            }]
+        },
+        options: deathChartOptions
     })
 }
 

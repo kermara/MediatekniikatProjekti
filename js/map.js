@@ -20,7 +20,7 @@
   map.getPane('labels').style.zIndex = 650;
   map.getPane('labels').style.pointerEvents = 'none';
 
- let positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+  let positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
     attribution: '©OpenStreetMap, ©CartoDB'
   }).addTo(map);
 
@@ -48,8 +48,12 @@
 
       //for html
       const div = document.querySelector('#info');
-
       let content = `<ul>`;
+
+      const casesLastDate = confirmedLastDate(confirmedCases);
+      console.log(casesLastDate);
+      content += `<li><b>Viimeisen vrk:n vahvistetut tartunnat: </b> ${casesLastDate}</li>`;
+
       const totalc = formattedResponse.confirmed.length;
       content += `<li><strong>Vahvistetut tartunnat yhteensä: </strong> ${totalc}</li>`;
 
@@ -87,6 +91,8 @@
   //finds all confirmed cases by district
   const getConfirmedHCDistricts = (data) =>  data.map(confirmedCase => confirmedCase.healthCareDistrict);
 
+  const getConfirmedDate = (data) => data.map(confirmedCase => confirmedCase.date);
+
   //finds all death cases
   const getDeathCases = (data) => ( data.deaths )
 
@@ -107,6 +113,19 @@
     });
     return map;
   }
+  function confirmedLastDate(data) {
+    let indices = [];
+    const dates = getConfirmedDate(data);
+    let lastDate = dates.pop();
+    let idx = dates.indexOf(lastDate);
+    while (idx != -1) {
+      indices.push(idx);
+      idx = dates.indexOf(lastDate, idx + 1);
+    }
+    return indices.length + 1;
+    console.log(data);
+  }
+
   const legend = L.control({position: 'topright'});
 
   legend.onAdd = (map) => {
@@ -115,15 +134,15 @@
         grades = [ 10, 50, 100, 200, 500, 1000, 3000],
         labels = [];
 
-      labels.push(
-          '<i style="background:' + '#FED976 "></i>' + grades[0] + '-' + grades[1] + '<br>' +
-          '<i style="background:' + '#FEB24C "></i>' + grades[1] + '-' + grades[2] + '<br>' +
-          '<i style="background:' + '#FD8D3C "></i>' + grades[2] + '-' + grades[3] + '<br>' +
-          '<i style="background:' + '#FC4E2A "></i>' + grades[3] + '-' + grades[4] + '<br>' +
-          '<i style="background:' + '#E31A1C "></i>' + grades[4] + '-' + grades[5] + '<br>' +
-          '<i style="background:' + '#BD0026 "></i>' + grades[5] + '-' + grades[6] + '<br>' +
-          '<i style="background:' + '#800026 "></i>' + grades[6] + '+' + '<br>'
-      )
+    labels.push(
+        '<i style="background:' + '#FED976 "></i>' + grades[0] + '-' + grades[1] + '<br>' +
+        '<i style="background:' + '#FEB24C "></i>' + grades[1] + '-' + grades[2] + '<br>' +
+        '<i style="background:' + '#FD8D3C "></i>' + grades[2] + '-' + grades[3] + '<br>' +
+        '<i style="background:' + '#FC4E2A "></i>' + grades[3] + '-' + grades[4] + '<br>' +
+        '<i style="background:' + '#E31A1C "></i>' + grades[4] + '-' + grades[5] + '<br>' +
+        '<i style="background:' + '#BD0026 "></i>' + grades[5] + '-' + grades[6] + '<br>' +
+        '<i style="background:' + '#800026 "></i>' + grades[6] + '+' + '<br>'
+    )
 
 
     div.innerHTML = labels.join('<br>');
@@ -141,20 +160,20 @@
           {mode: 'cors'});
       if (!response.ok) throw new Error('jokin meni pieleen');
       const data = await response.json();
-        L.geoJson(data, {
-          style: (feature, layer) => {
-            const cases = myData.get(feature.properties.healthCareDistrict);
-            getColor(cases);
+      L.geoJson(data, {
+        style: (feature, layer) => {
+          const cases = myData.get(feature.properties.healthCareDistrict);
+          getColor(cases);
           return {
             color:
-            cases > 3000 ? '#800026' :
-                cases > 1000  ? '#BD0026' :
-                    cases > 500  ? '#E31A1C' :
-                        cases > 200  ? '#FC4E2A' :
-                            cases > 100   ? '#FD8D3C' :
-                                cases > 50   ? '#FEB24C' :
-                                    cases > 10   ? '#FED976' :
-                                        '#FFEDA0',
+                cases > 3000 ? '#800026' :
+                    cases > 1000  ? '#BD0026' :
+                        cases > 500  ? '#E31A1C' :
+                            cases > 200  ? '#FC4E2A' :
+                                cases > 100   ? '#FD8D3C' :
+                                    cases > 50   ? '#FEB24C' :
+                                        cases > 10   ? '#FED976' :
+                                            '#FFEDA0',
             weight: 2,
             opacity: 1,
             dashArray: '3',
@@ -163,7 +182,7 @@
         },
 
         onEachFeature: (feature, layer) => {
-          let popupContent = '<h3>Tartunnat maakunnassa: </h3> ' +
+          let popupContent = '<h3>Tartunnat sairaanhoitopiireittäin: </h3> ' +
               '<h4>' + feature.properties.healthCareDistrict + ' ' +
               myData.get(feature.properties.healthCareDistrict) + '</h4>';
           if (feature.properties && feature.properties.popupContent) {
@@ -179,17 +198,17 @@
     }
   }
   const getColor = (cases) => {
-  return {
-    color:
-    cases > 3000 ? '#800026' :
-      cases > 1000 ? '#BD0026' :
-          cases > 500 ? '#E31A1C' :
-              cases > 200 ? '#FC4E2A' :
-                  cases > 100 ? '#FD8D3C' :
-                      cases > 50 ? '#FEB24C' :
-                          cases > 10 ? '#FED976' :
-                              '#FFEDA0'
-  }
+    return {
+      color:
+          cases > 3000 ? '#800026' :
+              cases > 1000 ? '#BD0026' :
+                  cases > 500 ? '#E31A1C' :
+                      cases > 200 ? '#FC4E2A' :
+                          cases > 100 ? '#FD8D3C' :
+                              cases > 50 ? '#FEB24C' :
+                                  cases > 10 ? '#FED976' :
+                                      '#FFEDA0'
+    }
   }
 
   //needed in order to fetches to function
