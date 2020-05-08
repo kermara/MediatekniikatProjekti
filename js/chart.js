@@ -60,6 +60,12 @@ const getTotalCases = (dataObj) => {
     return Object.values(dataObj["confirmedCasesByDate"]).reverse().map(cumulativeSum)
 }
 
+const getTotalDeaths = (dataObj) => {
+    const cumulativeSum = (sum => value => sum += value)(0);
+    return Object.values(dataObj["deathCasesByDate"]).map(cumulativeSum)
+}
+
+
 // contexts of the chart pointing element
 const confirmedCasesByDateLineChartCtx = document.querySelector('#confirmedCasesByDateLineChart').getContext('2d');
 const confirmedCasesByDistrictBarChartCtx = document.querySelector('#confirmedCasesByDistrictBarChart').getContext('2d');
@@ -123,9 +129,9 @@ const drawCharts = (dataObj) => {
         data: {
             labels: Object.keys(dataObj["deathCasesByDate"]).reverse(),
             datasets: [{
-                label: 'Vahvistetut kuolemat tänä päivänä',
+                label: 'Vahvistetut kuolemat yhteensä Suomessa',
                 fill: false,
-                data: Object.values(dataObj["deathCasesByDate"]),
+                data: getTotalDeaths(dataObj),
                 borderColor: "#222",
                 borderWidth: 1
             }]
