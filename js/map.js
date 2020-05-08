@@ -1,8 +1,6 @@
 'use strict';
 
-(function ( ){
-
-
+( ( ) => {
 
   //search for a Open Street Map
   let map = L.map('map', {
@@ -32,8 +30,6 @@
   }).addTo(map);
 
 
-
-
   //fetch confirmed and death cases
   //search the number of cases by Health Care District or University Hospital
   //creates html
@@ -51,35 +47,32 @@
       //console.log(confirmedCasesDataObj);
 
       //for html
-      const p = document.querySelector('p');
+      const div = document.querySelector('#info');
 
+      let content = `<ul>`;
       const totalc = formattedResponse.confirmed.length;
-      p.innerHTML += `<color><b>Vahvistetut tartunnat yhteensä: </b><br><br><font color ='#10316b'> ${totalc}</color><br></p>`;
+      content += `<li><strong>Vahvistetut tartunnat yhteensä: </strong> ${totalc}</li>`;
 
       const totald = formattedResponse.deaths.length;
-      p.innerHTML += `<p><b>Kuolleita yhteensä: </b><br><br></B><font color ='#10316b'>${totald}</font></p>`;
-
-      const recovered = formattedResponse.recovered.length;
-      p.innerHTML += `<p><b>Parantuneita: </b><br><br></B><font color ='#10316b'>${recovered}</font></p>`;
-
-      /*const casesToday = formattedResponse.deaths.length;
-      p.innerHTML += `<p><b>Vahvistettuja tartuntoja tänään: </b><br><br></B><font color ='#10316b'>${totald}</font></p>`;
-
-      const deathsToday = formattedResponse.deaths.length;
-      p.innerHTML += `<p><b>Kuolleita tänään: </b><br><br></B><font color ='#10316b'>${totald}</font></p>`;*/
+      content += `<li><strong>Kuolleita yhteensä: </strong>${totald}</li>`;
 
       const deathCases = getDeathCases(formattedResponse);
       const area = getDeathsbyArea(deathCases);
       const dCases = getValuesBy(area);
-      p.innerHTML += `<p><b>Kuolleet yliopistosairaalan mukaan: </b></p>`;
-        for (let [key, value] of dCases) {
-          p.innerHTML += `<p>${key}:<font color ='#10316b'> ${value}</font></p>`;
-        }
-
+      content += `<li><b>Kuolleet yliopistosairaalan mukaan: </b></li>`;
+      content += `<li>`;
+      content += `<ul>`;
+      for (let [key, value] of dCases) {
+        content += `<li>${key}: <span style="color: #e25822">${value}</span></li>`;
+      }
+      content += `</ul>`;
+      content += `</li>`;
       const lastUpdate = formattedResponse.confirmed.pop().date;
       let d = new Date(lastUpdate);
-      p.innerHTML += `<p><b>Tiedot päivitetty: </b> ${Intl.DateTimeFormat(
-          ['ban', 'id']).format(d)}</p>`;
+      content += `<li><b>Tiedot päivitetty: </b> ${Intl.DateTimeFormat(
+          ['ban', 'id']).format(d)}</li>`;
+      content += `</ul>`;
+      div.innerHTML = content;
 
       return cCases;
 
@@ -89,32 +82,19 @@
   }
 
   //finds all confirmed cases
-  function getConfirmedCases(data) {
-    const confirmedCases = data.confirmed;
-    return confirmedCases;
-  }
+  const getConfirmedCases = (data) => data.confirmed;
 
   //finds all confirmed cases by district
-  function getConfirmedHCDistricts(data) {
-    const healthCareDistricts = data.map(
-        confirmedCase => confirmedCase.healthCareDistrict);
-    return healthCareDistricts;
-  }
+  const getConfirmedHCDistricts = (data) =>  data.map(confirmedCase => confirmedCase.healthCareDistrict);
 
   //finds all death cases
-  function getDeathCases(data) {
-    const deathCases = data.deaths;
-    return deathCases;
-  }
+  const getDeathCases = (data) => ( data.deaths )
 
   //finds death cases by university hospital
-  function getDeathsbyArea(data) {
-    const area = data.map(confirmedCase => confirmedCase.area);
-    return area;
-  }
+  const getDeathsbyArea = (data) => ( data.map(confirmedCase => confirmedCase.area) )
 
   //maps arrays per key and value
-  function getValuesBy(data) {
+  const getValuesBy = (data) => {
     const map = new Map();
     data.forEach(function(keyValue) {
       if (map.has(keyValue)) {
@@ -127,11 +107,11 @@
     });
     return map;
   }
-  var legend = L.control({position: 'topright'});
+  const legend = L.control({position: 'topright'});
 
-  legend.onAdd = function (map) {
+  legend.onAdd = (map) => {
 
-    var div = L.DomUtil.create('div', 'info legend'),
+    const div = L.DomUtil.create('div', 'info legend'),
         grades = [ 10, 50, 100, 200, 500, 1000, 3000],
         labels = [];
 
@@ -162,7 +142,7 @@
       if (!response.ok) throw new Error('jokin meni pieleen');
       const data = await response.json();
         L.geoJson(data, {
-          style: function(feature, layer) {
+          style: (feature, layer) => {
             const cases = myData.get(feature.properties.healthCareDistrict);
             getColor(cases);
           return {
@@ -182,7 +162,7 @@
           };
         },
 
-        onEachFeature: function(feature, layer) {
+        onEachFeature: (feature, layer) => {
           let popupContent = '<h3>Tartunnat maakunnassa: </h3> ' +
               '<h4>' + feature.properties.healthCareDistrict + ' ' +
               myData.get(feature.properties.healthCareDistrict) + '</h4>';
@@ -198,7 +178,7 @@
       console.log(error);
     }
   }
-  function getColor(cases) {
+  const getColor = (cases) => {
   return {
     color:
     cases > 3000 ? '#800026' :
