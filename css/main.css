@@ -77,6 +77,7 @@ header > h1 > a {
     text-align: center;
     min-width: 400px;
     margin: 2em auto;
+    max-height: 550px;
 }
 
 .flex-child-map {
@@ -89,6 +90,7 @@ header > h1 > a {
     height: 88vh;
     margin: auto;
     min-width: 400px;
+    max-height: 900px;
 }
 
 .flex-child-info > ul {
