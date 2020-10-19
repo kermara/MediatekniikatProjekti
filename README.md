@@ -13,9 +13,9 @@ http://users.metropolia.fi/~kerttulr/tartuntatiedot.fi/
 
 ### Contributors
 
-- Maksim Ilmast - charts, design, content
-- Samuel Aitamaa - rss, charts, map, design, video advertising
-- Kerttuli Ratilainen - map, information billboard, design, content, video advertising
+- Maksim  - charts, design, content
+- Samuel  - rss, charts, map, design, video advertising
+- Kerttuli  - map, information billboard, design, content, video advertising
 
 #### Used API
 
